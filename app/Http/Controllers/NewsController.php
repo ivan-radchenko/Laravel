@@ -18,4 +18,14 @@ class NewsController extends Controller
     {
         return \view('news.show',['news'=>$this ->getNews($id)]);
     }
+
+    public function categories():View
+    {
+        return \view('news.categories', ['categoriesList'=> $this->getCategories()]);
+    }
+
+    public function showCategory(int $id): View
+    {
+        return \view('news.showCategory', ['categories'=> $this->getCategories($id)],['newsList'=>$this ->getNews()]);
+    }
 }

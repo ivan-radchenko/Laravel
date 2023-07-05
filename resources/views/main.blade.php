@@ -8,15 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Current New Page</h1>
-<h2><a href="/">Главная страница</a></h2>
-<h2><?=$news['title']?></h2> <br />
-
-<div>
-    <img src="<?=$news['image']?>" alt="image"/>
-    <p>автор:<?=$news['author']?></p>
-    <p>время:<?=$news['created_at']?></p>
-    <p><?=$news['description']?></p>
-</div><hr /><br />
+<h1>Welcome dear friends!</h1>
+<h2><a href="<?=route('news.index')?>">Лента новостей</a></h2>
+<h2><a href="<?=route('news.categories')?>">Категории</a></h2>
 </body>
 </html>

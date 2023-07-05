@@ -18,19 +18,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//страница приветствия ползователей
-Route::get('/hello', function () {
-    return  "Welcome to Laravel";
+//главная страница приветствия
+Route::get('/', function () {
+    return view('main');
 });
-
-//Страница с информацией о проекте.
-Route::get('/info', function () {
-    return  "This project created in 2023";
-});
-
 //новости
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
 Route::get('/news/{id}', [NewsController::class, 'show'])
     ->where('id', '\d+')
     ->name('news.show');
+
+//категории новостей
+Route::get('/news/categories', [NewsController::class, 'categories'])
+    ->name('news.categories');
+Route::get('/news/category/{id}', [NewsController::class, 'showCategory'])
+    ->where('id', '\d+')
+    ->name('news.showCategory');
