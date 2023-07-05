@@ -29,5 +29,5 @@ Route::get('/info', function () {
 
 //Страница для вывода новостей
 Route::get('/news/{id}', static function (string $news_id) {
-    return  "$news_id" ;
+    return  "Новость с id: $news_id";
 });
