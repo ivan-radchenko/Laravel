@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,9 @@ Route::get('/info', function () {
     return  "This project created in 2023";
 });
 
-//Страница для вывода новостей
-Route::get('/news/{id}', static function (string $news_id) {
-    return  "Новость с id: $news_id";
-});
+//новости
+Route::get('/news', [NewsController::class, 'index'])
+    ->name('news.index');
+Route::get('/news/{id}', [NewsController::class, 'show'])
+    ->where('id', '\d+')
+    ->name('news.show');
