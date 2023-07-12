@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bae0877-32d2-4294-b159-7f55e3cd765f" name="Changes" comment="" />
+    <list default="true" id="4bae0877-32d2-4294-b159-7f55e3cd765f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,9 +150,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "hw__2",
+    "git-widget-placeholder": "hw__3",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/SonySakura/Desktop/Laravel",
+    "last_opened_file_path": "C:/Users/SonySakura/Desktop/Laravel/app/Http",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -186,6 +189,7 @@
       <workItem from="1687012750619" duration="2328000" />
       <workItem from="1687274341083" duration="1929000" />
       <workItem from="1688552625187" duration="22884000" />
+      <workItem from="1689182035626" duration="734000" />
     </task>
     <servers />
   </component>
