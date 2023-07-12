@@ -10,19 +10,19 @@
 <body>
 <h1>All news page</h1>
 <h2><a href="/">Главная страница</a></h2>
-<h2><a href="<?=route('news.categories')?>">CATEGORIES</a></h2>
-<?php foreach ($newsList as $news): ?>
+<h2><a href="{{route('news.categories')}}">CATEGORIES</a></h2>
+@foreach ($newsList as $news)
 
 <div>
-    <h4><a href="<?=route('news.show', ['id' => $news['id']])?>"><?=$news['title']?></a></h4>
+    <h4><a href="{{route('news.show', ['id' => $news['id']])}}"><?=$news['title']?></a></h4>
     <br>
-    <img src="<?=$news['image']?>" alt="image"/>
-    <p>автор:<?=$news['author']?></p>
-    <p>время:<?=$news['created_at']?></p>
-    <p><?=$news['description']?></p>
+    <img src="{{$news['image']}}" alt="image"/>
+    <p>автор:{{$news['author']}}</p>
+    <p>время:{{$news['created_at']}}</p>
+    <p>{{$news['description']}}</p>
 </div>
 <hr>
 <br>
-<?php endforeach;?>
+@endforeach
 </body>
 </html>

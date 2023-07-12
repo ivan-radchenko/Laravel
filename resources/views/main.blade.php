@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Welcome dear friends!</h1>
-<h2><a href="<?=route('news.index')?>">Лента новостей</a></h2>
-<h2><a href="<?=route('news.categories')?>">Категории</a></h2>
+<h2><a href="{{route('news.index')}}">Лента новостей</a></h2>
+<h2><a href="{{route('news.categories')}}">Категории</a></h2>
 </body>
 </html>

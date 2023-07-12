@@ -10,10 +10,10 @@
 <body>
 <h1>Categories page</h1>
 <h2><a href="/">Главная страница</a></h2>
-<?php foreach ($categoriesList as $category): ?>
-<h2><a href="<?=route('news.showCategory', ['id' => $category['id']])?>"><?=$category['name']?></a></h2>
+@foreach ($categoriesList as $category)
+<h2><a href="{{route('news.showCategory', ['id' => $category['id']])}}">{{$category['name']}}</a></h2>
 <hr>
 <br>
-<?php endforeach;?>
+@endforeach
 </body>
 </html>
