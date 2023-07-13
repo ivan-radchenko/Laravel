@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4bae0877-32d2-4294-b159-7f55e3cd765f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/news/categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/news/categories.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/news/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/news/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/news/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/news/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/news/showCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/news/showCategory.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -197,6 +202,7 @@
       <workItem from="1688552625187" duration="22884000" />
       <workItem from="1689182035626" duration="10933000" />
       <workItem from="1689236154117" duration="11725000" />
+      <workItem from="1689260785863" duration="915000" />
     </task>
     <servers />
   </component>

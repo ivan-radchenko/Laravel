@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard Template · Bootstrap v5.0</title>
+    <title>Admin|ТрэшНовости.РФ</title>
     <link href="{{asset('assets/bootstrap.min.css')}}" rel="stylesheet">
     <style>
         .bd-placeholder-img {

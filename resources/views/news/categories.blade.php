@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title')Категории@parent @stop
 @section('content')
     <h1>Категории ТрэшНовостей.РФ</h1>
     <hr>

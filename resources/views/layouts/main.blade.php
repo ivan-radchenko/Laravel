@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Album example · Bootstrap v5.0</title>
+    <title>@section('title')@show|ТрэшНовости.РФ</title>
 
     <link href="{{asset('assets/bootstrap.min.css')}}" rel="stylesheet">
 

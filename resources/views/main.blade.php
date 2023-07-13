@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title')Добро пожаловать@parent @stop
 @section('content')
 <section class="py-5 text-center container">
     <div class="row py-lg-5">
