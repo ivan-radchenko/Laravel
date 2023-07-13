@@ -12,11 +12,11 @@
                     <img src="{{$news['image']}}" alt="image"/>
 
                     <div class="card-body">
-                        <h4><a href="{{route('news.show', ['id' => $news['id']])}}"><?=$news['title']?></a></h4>
+                        <h4><?=$news['title']?></h4>
                         <p class="card-text">{!!$news['description']!!}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Подробнее</button>
+                                <a href="{{route('news.show', ['id' => $news['id']])}}" class="btn btn-sm btn-outline-secondary">Подробнее</a>
                             </div>
                             <small class="text-muted">{{$news['author']}}{{$news['created_at']}}</small>
                         </div>
