@@ -9,11 +9,11 @@
 
     @include('inc.message')
 
-    <x-alert :type="request()->get('type', 'light')" message="Это просто уведомление"></x-alert>
-    <x-alert type="danger" message="Это просто уведомление"></x-alert>
-    <x-alert type="warning" message="Это просто уведомление"></x-alert>
-    <x-alert type="success" message="Это просто уведомление"></x-alert>
-    <x-alert type="info" message="Это просто уведомление"></x-alert>
-    <x-alert type="dark" message="Это просто уведомление"></x-alert>
-    <x-alert type="primary" message="Это просто уведомление"></x-alert>
+    <x-alert :type="request()->get('type', 'light')" message="Уведомление"></x-alert>
+    <x-alert type="danger" message="Уведомление"></x-alert>
+    <x-alert type="warning" message="Уведомление"></x-alert>
+    <x-alert type="success" message="Уведомление"></x-alert>
+    <x-alert type="info" message="Уведомление"></x-alert>
+    <x-alert type="dark" message="Уведомление"></x-alert>
+    <x-alert type="primary" message="Уведомление"></x-alert>
 @endsection

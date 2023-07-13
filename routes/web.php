@@ -21,11 +21,15 @@ Route::get('/', function () {
 });
 
 //Admin
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function () {
-    Route::get('/', AdminController::class)->name('index');
-    Route::resource('/categories', AdminCategoryController::class);
-    Route::resource('/news', AdminNewsController::class);
-});
+Route::get('/admin', AdminController::class)
+    ->name('admin.index');
+Route::get('/admin/categories', [AdminCategoryController::class,'index'])
+    ->name('admin.categories');
+Route::get('/admin/news', [AdminNewsController::class, 'index'])
+    ->name('admin.news');
+Route::get('/admin/news/create', [AdminNewsController::class, 'create'])
+    ->name('admin.news.create');
+
 
 //главная страница приветствия
 Route::get('/', function () {

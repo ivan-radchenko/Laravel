@@ -1,1 +1,2 @@
-This is message
+<h4>Уведомления:</h4>
+<hr>

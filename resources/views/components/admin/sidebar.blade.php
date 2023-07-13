@@ -8,13 +8,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('admin.categories')}}">
                     <span data-feather="file"></span>
                     Категории
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.news.index') }}">
+                <a class="nav-link" href="{{ route('admin.news') }}">
                     <span data-feather="shopping-cart"></span>
                     Новости
                 </a>
