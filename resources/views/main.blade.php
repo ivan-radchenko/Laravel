@@ -1,15 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1>Welcome dear friends!</h1>
-<h2><a href="{{route('news.index')}}">Лента новостей</a></h2>
-<h2><a href="{{route('news.categories')}}">Категории</a></h2>
-</body>
-</html>
+@extends('layouts.main')
+@section('content')
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Добро пожаловать на ТрэшНовости.РФ</h1>
+            <p class="lead text-muted">На нашем сайте вы найдете самые трэшовые новости, бережно собраннные для вас со всех уголков СССР</p>
+            <p>
+                <a href="{{route('news.index')}}" class="btn btn-primary my-2">Лента новостей</a>
+                <a href="{{route('news.categories')}}" class="btn btn-secondary my-2">Категории</a>
+            </p>
+        </div>
+    </div>
+</section>
+@endsection
