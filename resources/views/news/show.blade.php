@@ -1,22 +1,24 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1>Current New Page</h1>
-<h2><a href="/">Главная страница</a></h2>
-<h2><?=$news['title']?></h2> <br />
+@extends('layouts.main')
+@section('title'){{$news['title']}}@parent @stop
+@section('content')
+    <a href="{{route('news.categories')}}" class="btn btn-primary my-2">Категории</a>
+    <hr>
 
-<div>
-    <img src="<?=$news['image']?>" alt="image"/>
-    <p>автор:<?=$news['author']?></p>
-    <p>время:<?=$news['created_at']?></p>
-    <p><?=$news['description']?></p>
-</div><hr /><br />
-</body>
-</html>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{{$news['image']}}" alt="image"/>
+
+                    <div class="card-body">
+                        <h4>{{$news['title']}}</a></h4>
+                        <p class="card-text">{!!$news['description']!!}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">{{$news['author']}}{{$news['created_at']}}</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+@endsection
+

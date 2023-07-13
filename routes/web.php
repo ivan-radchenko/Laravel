@@ -1,5 +1,7 @@
 <?php
-
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +20,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Admin
+Route::get('/admin', AdminController::class)
+    ->name('admin.index');
+Route::get('/admin/categories', [AdminCategoryController::class,'index'])
+    ->name('admin.categories');
+Route::get('/admin/news', [AdminNewsController::class, 'index'])
+    ->name('admin.news');
+Route::get('/admin/news/create', [AdminNewsController::class, 'create'])
+    ->name('admin.news.create');
+
+
 //главная страница приветствия
 Route::get('/', function () {
     return view('main');
 });
+
 //новости
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');

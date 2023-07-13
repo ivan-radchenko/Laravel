@@ -31,11 +31,11 @@ class Controller extends BaseController
                 $news[] = [
                     'id' => ($i === 0) ? ++$i : $i,
                     'category' => fake()->numberBetween(1, 6),
-                    'title' => fake()->jobTitle(),
+                    'title' => fake()->realTextBetween(5,10),
                     'author' => fake()->userName(),
                     'image' => fake()->imageUrl(300,200),
                     'status' => 'ACTIVE',
-                    'description' => fake()->text(200),
+                    'description' => fake()->realTextBetween(100,120),
                     'created_at' => now()->format('d-m-y h:i')
                 ];
             }
