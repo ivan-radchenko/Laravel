@@ -29,6 +29,8 @@ Route::get('/admin/news', [AdminNewsController::class, 'index'])
     ->name('admin.news');
 Route::get('/admin/news/create', [AdminNewsController::class, 'create'])
     ->name('admin.news.create');
+Route::post('/admin/news/create', [AdminNewsController::class, 'store'])
+    ->name('admin.news.store');
 
 
 //главная страница приветствия
