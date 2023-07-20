@@ -30,7 +30,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        dd($_REQUEST);
+        return response() ->json($request->all());
     }
 
     /**

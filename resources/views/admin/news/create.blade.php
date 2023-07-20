@@ -4,6 +4,11 @@
         <h1 class="h2">Добавить трэш новость</h1>
     </div>
     <div>
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                <x-alert :message="$error" type="danger"></x-alert>
+            @endforeach
+        @endif
         <form method="post" action="{{@route('admin.news.store')}}">
             @csrf
             <div class="form-group">

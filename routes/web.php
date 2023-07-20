@@ -24,6 +24,7 @@ Route::get('/', function () {
 //общие страницы
 Route::get('/admin', AdminController::class)
     ->name('admin.index');
+
 Route::get('/admin/categories', [AdminCategoryController::class,'index'])
     ->name('admin.categories');
 Route::get('/admin/news', [AdminNewsController::class, 'index'])

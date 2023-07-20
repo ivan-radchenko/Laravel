@@ -39,6 +39,6 @@ class NewsController extends Controller
 
     public function uploadingStore(Request $request)
     {
-        dd($_REQUEST);
+        return response() ->json($request->all());
     }
 }
