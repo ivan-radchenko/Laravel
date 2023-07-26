@@ -11,11 +11,11 @@
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h1>{{$category['name']}}</h1>
+                        <h1>{{$category->name}}</h1>
                         <p class="card-text">--Описание категории--</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="{{route('news.showCategory', ['id' => $category['id']])}}" class="btn btn-primary my-2">Перейти в категорию</a>
+                                <a href="{{route('news.showCategory', ['id' => $category->id])}}" class="btn btn-primary my-2">Перейти в категорию</a>
                             </div>
                             <small class="text-muted"></small>
                         </div>

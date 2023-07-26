@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -10,25 +12,33 @@ class NewsController extends Controller
     //метод выводящий все новости
     public function index(): View
     {
-        return \view('news.index',['newsList'=>$this ->getNews()]);
+        $news = app(News::class);
+
+        return \view('news.index',['newsList'=>$news ->getAll()]);
     }
 
     //метод выводящий конкретную новость по id
     public function show(int $id): View
     {
-        return \view('news.show',['news'=>$this ->getNews($id)]);
+        $news = app(News::class);
+
+        return \view('news.show',['news'=>$news ->getItemById($id)]);
     }
 
     //метод выводящий все категории
     public function categories():View
     {
-        return \view('news.categories', ['categoriesList'=> $this->getCategories()]);
+        $categories = app(Category::class);
+
+        return \view('news.categories', ['categoriesList'=> $categories->getAll()]);
     }
 
     //метод выводящий новости из конкретной категории
     public function showCategory(int $id): View
     {
-        return \view('news.showCategory', ['categories'=> $this->getCategories($id)],['newsList'=>$this ->getNews()]);
+        $news = app(News::class);
+        $categories = app(Category::class);
+        return \view('news.showCategory', ['categories'=> $categories->getCategoryById($id)],['newsList'=>$news ->getAll()]);
     }
 
     //метод выводящий страницу выгрузки
