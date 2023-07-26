@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('author',100)->default('Admin');
             $table->string('image',255)->nullable();
             $table->enum('status',Status::getEnums());
-            $table->foreignId('source')->constrained('sources');
+            $table->text('description')->nullable();
+            $table->foreignId('source_id')->constrained('sources');
             $table->timestamps();
         });
     }
