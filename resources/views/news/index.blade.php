@@ -10,16 +10,16 @@
         @foreach ($newsList as $news)
         <div class="col">
             <div class="card shadow-sm">
-                <img src="{{$news['image']}}" alt="image"/>
+                <img src="{{$news->image}}" alt="image"/>
 
                 <div class="card-body">
-                    <h4>{{$news['title']}}</a></h4>
-                    <p class="card-text">{!!$news['description']!!}</p>
+                    <h4>{{$news->title}}</a></h4>
+                    <p class="card-text">{!!$news->description!!}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <a href="{{route('news.show', ['id' => $news['id']])}}" type="button" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                            <a href="{{route('news.show', ['id' => $news->id])}}" type="button" class="btn btn-sm btn-outline-secondary">Подробнее</a>
                         </div>
-                        <small class="text-muted">{{$news['author']}}{{$news['created_at']}}</small>
+                        <small class="text-muted">{{$news->author}}{{$news->created_at}}</small>
                     </div>
                 </div>
 

@@ -10,7 +10,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
     //временно формируем массив данных
-    public function getNews(int $id=null): array
+    /*public function getNews(int $id=null): array
     {
         if ($id !== null) {
         return [
@@ -58,5 +58,5 @@ class Controller extends BaseController
                 ];
             }
             return $categories;
-    }
+    }*/
 }
