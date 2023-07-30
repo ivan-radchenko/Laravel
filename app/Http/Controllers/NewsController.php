@@ -12,9 +12,7 @@ class NewsController extends Controller
     //метод выводящий все новости
     public function index(): View
     {
-        $news = app(News::class);
-
-        return \view('news.index',['newsList'=>$news ->getAll()]);
+        return \view('news.index',['newsList'=>News::All()]);
     }
 
     //метод выводящий конкретную новость по id

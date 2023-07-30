@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\News;
+use App\Models\Source;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -16,9 +18,7 @@ class NewsController extends Controller
      */
     public function index(): View
     {
-        $news = app(News::class);
-
-        return \view('admin.news.index',['newsList'=>$news ->getAll()]);
+        return \view('admin.news.index',['newsList'=>News::All()]);
     }
 
     /**
@@ -26,15 +26,23 @@ class NewsController extends Controller
      */
     public function create():View
     {
-        return view('admin.news.create');
+        return view('admin.news.create',['categories'=>Category::All(),'sources'=>Source::All()]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {   $request->validate(['title' => 'required']);
-        return response() ->json($request->all());
+    {
+        $request->validate(['title' => 'required']);
+
+        $data = $request->only(['category_id','title','description','author','source_id','status']);
+
+        $news = new News($data);
+        if ($news->save()){
+            return redirect()->route('admin.index')->with('success','запись успешно сохранена');
+        }
+        return back()->with('error','ошибка сохранения');
     }
 
     /**
