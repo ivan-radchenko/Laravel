@@ -34,6 +34,12 @@ Route::get('/admin/news/create', [AdminNewsController::class, 'create'])
     ->name('admin.news.create');
 Route::post('/admin/news/create', [AdminNewsController::class, 'store'])
     ->name('admin.news.store');
+//изменение новости
+Route::get('/admin/news/edit/{news}', [AdminNewsController::class, 'edit'])
+    ->name('admin.news.edit');
+Route::put('/admin/news/edit/{news}', [AdminNewsController::class, 'update'])
+    ->name('admin.news.update');
+
 //добавление категории
 Route::get('/admin/categories/create', [AdminCategoryController::class, 'create'])
     ->name('admin.categories.create');

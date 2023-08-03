@@ -40,7 +40,7 @@ class NewsController extends Controller
 
         $news = new News($data);
         if ($news->save()){
-            return redirect()->route('admin.index')->with('success','запись успешно сохранена');
+            return redirect()->route('admin.news')->with('success','запись успешно сохранена');
         }
         return back()->with('error','ошибка сохранения');
     }
@@ -48,25 +48,37 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(News $news)
     {
-        //
+        return response()->json($this->getNews(), 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(News $news)
     {
-        //
+        $categories = Category::all();
+        $sources = Source::all();
+        return view('admin.news.edit', [
+            'categories' => $categories,
+            'sources'=>$sources,
+            'news' => $news,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, News $news)
     {
-        //
+        $data = $request->only(['category_id','title','description','author','source_id','status']);
+        $news = $news->fill($data);
+
+        if ($news->save()){
+            return redirect()->route('admin.news')->with('success','запись успешно изменена');
+        }
+        return back()->with('error','ошибка изменения');
     }
 
     /**
