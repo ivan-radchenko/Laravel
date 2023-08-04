@@ -2,6 +2,7 @@
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\OrdersController as AdminOrderController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,15 @@ Route::get('/admin/categories/edit/{categories}', [AdminCategoryController::clas
     ->name('admin.categories.edit');
 Route::put('/admin/categories/edit/{categories}', [AdminCategoryController::class, 'update'])
     ->name('admin.categories.update');
+
+//выгрузка новостей
+Route::get('/admin/orders', [AdminOrderController::class, 'index'])
+    ->name('admin.orders');
+Route::get('/admin/orders/edit/{orders}', [AdminOrderController::class, 'edit'])
+    ->name('admin.orders.edit');
+Route::put('/admin/orders/edit/{orders}', [AdminOrderController::class, 'update'])
+    ->name('admin.orders.update');
+
 
 //главная страница приветствия
 Route::get('/', function () {

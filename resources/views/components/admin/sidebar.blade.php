@@ -9,14 +9,20 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link @if (request()->routeIs('admin.categories*'))active @endif" href="{{route('admin.categories')}}">
-                    <span data-feather="file"></span>
+                    <span data-feather="database"></span>
                     Категории
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link @if (request()->routeIs('admin.news*'))active @endif" href="{{ route('admin.news') }}">
-                    <span data-feather="shopping-cart"></span>
+                    <span data-feather="database"></span>
                     Новости
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if (request()->routeIs('admin.orders*'))active @endif" href="{{ route('admin.orders') }}">
+                    <span data-feather="send"></span>
+                    Заказы
                 </a>
             </li>
             <li class="nav-item">
