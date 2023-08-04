@@ -17,4 +17,9 @@ class Source extends Model
     {
         return $this->hasMany(News::class,'source_id');
     }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(order::class,'category_id');
+    }
 }

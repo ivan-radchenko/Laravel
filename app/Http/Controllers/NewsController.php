@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\News;
+use App\Models\order;
+use App\Models\Source;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -42,11 +44,23 @@ class NewsController extends Controller
     //метод выводящий страницу выгрузки
     public function uploading():View
     {
-        return \view('news.uploading');
+        $categories = Category::all();
+        $sources = Source::all();
+
+        return \view('news.uploading',[
+            'categories' => $categories,
+            'sources'=>$sources,
+        ]);
     }
 
     public function uploadingStore(Request $request)
     {
-        return response() ->json($request->all());
+        $data = $request->only(['customer','phone','email','category_id','source_id','description']);
+
+        $order = new order($data);
+        if ($order->save()){
+            return redirect('/')->with('success','заказ на выгрузку новостей создан');
+        }
+        return back()->with('error','ошибка создания заказа');
     }
 }

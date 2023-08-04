@@ -19,4 +19,9 @@ class Category extends Model
     {
         return $this->hasMany(News::class,'category_id');
     }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(order::class,'category_id');
+    }
 }
