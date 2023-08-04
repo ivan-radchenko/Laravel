@@ -45,6 +45,11 @@ Route::get('/admin/categories/create', [AdminCategoryController::class, 'create'
     ->name('admin.categories.create');
 Route::post('/admin/categories/create', [AdminCategoryController::class, 'store'])
     ->name('admin.categories.store');
+//изменение категории
+Route::get('/admin/categories/edit/{categories}', [AdminCategoryController::class, 'edit'])
+    ->name('admin.categories.edit');
+Route::put('/admin/categories/edit/{categories}', [AdminCategoryController::class, 'update'])
+    ->name('admin.categories.update');
 
 //главная страница приветствия
 Route::get('/', function () {

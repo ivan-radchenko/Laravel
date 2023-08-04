@@ -45,9 +45,9 @@ class NewsController extends Controller
 
         $news = new News($data);
         if ($news->save()){
-            return redirect()->route('admin.news')->with('success','запись успешно сохранена');
+            return redirect()->route('admin.news')->with('success','новость успешно сохранена');
         }
-        return back()->with('error','ошибка сохранения');
+        return back()->with('error','ошибка сохранения новости');
     }
 
     /**
@@ -80,10 +80,11 @@ class NewsController extends Controller
         $data = $request->only(['category_id','title','description','author','source_id','status']);
         $news = $news->fill($data);
 
-        if ($news->save()){
-            return redirect()->route('admin.news')->with('success','запись успешно изменена');
+        if ($news->save())
+        {
+            return redirect()->route('admin.news')->with('success','новость успешно изменена');
         }
-        return back()->with('error','ошибка изменения');
+        return back()->with('error','ошибка изменения новости');
     }
 
     /**

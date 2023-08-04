@@ -12,6 +12,8 @@ class Category extends Model
 
     protected $table = 'categories';
 
+    protected $fillable = ['name','description'];
+
     //связь с новостями
     public function news(): HasMany
     {
