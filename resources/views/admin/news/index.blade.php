@@ -4,18 +4,19 @@
         <h1 class="h2">Список новостей</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
+                <select class="form-select-sm" id="filter" >
+                    <option>filter</option>
+                    <option>{{ \App\Enums\News\Status::DRAFT->value }}</option>
+                    <option>{{ \App\Enums\News\Status::ACTIVE->value }}</option>
+                    <option>{{ \App\Enums\News\Status::BLOCKED->value }}</option>
+                </select>
+                <a href="{{route('admin.news')}}" type="button" class="btn btn-sm btn-outline-success">сброс</a>
                 <a href="{{route('admin.news.create')}}" type="button" class="btn btn-sm btn-outline-secondary">Добавить новость</a>
             </div>
         </div>
     </div>
     @include('inc.message')
-    <select  id="filter">
-        <option>filter</option>
-        <option>{{ \App\Enums\News\Status::DRAFT->value }}</option>
-        <option>{{ \App\Enums\News\Status::ACTIVE->value }}</option>
-        <option>{{ \App\Enums\News\Status::BLOCKED->value }}</option>
-    </select>
-    <a href="{{route('admin.news')}}" type="button" class="btn btn-sm btn-outline-success">сброс</a>
+
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
