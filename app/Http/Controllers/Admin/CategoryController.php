@@ -4,6 +4,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -14,7 +16,9 @@ class CategoryController extends Controller
      */
     public function index():View
     {
-        return view('admin.news.categories');
+        return \view('admin.news.categories',[
+            'categories'=>Category::all()
+        ]);
     }
 
     /**
@@ -30,13 +34,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        return response() ->json($request->all());
+        $data = $request->only(['name','description']);
+
+        $categories = new Category($data);
+        if ($categories->save()){
+            return redirect()->route('admin.categories')->with('success','категория успешно сохранена');
+        }
+        return back()->with('error','ошибка сохранения категории');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $categories)
     {
         //
     }
@@ -44,17 +54,26 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $categories)
     {
-        //
+        return view('admin.news.editCategory', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $categories)
     {
-        //
+        $data = $request->only(['name','description']);
+        $categories = $categories->fill($data);
+
+        if ($categories->save())
+        {
+            return redirect()->route('admin.categories')->with('success','категория успешно изменена');
+        }
+        return back()->with('error','ошибка изменения категории');
     }
 
     /**

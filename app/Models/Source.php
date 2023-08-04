@@ -4,15 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Source extends Model
 {
     use HasFactory;
+
     protected $table = 'sources';
-    public function getAll(): Collection
+
+    //связи
+    public function news(): HasMany
     {
-        return DB::table($this->table)->get();
+        return $this->hasMany(News::class,'source_id');
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(order::class,'category_id');
     }
 }

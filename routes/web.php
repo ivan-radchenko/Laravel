@@ -2,6 +2,7 @@
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\OrdersController as AdminOrderController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,11 +35,31 @@ Route::get('/admin/news/create', [AdminNewsController::class, 'create'])
     ->name('admin.news.create');
 Route::post('/admin/news/create', [AdminNewsController::class, 'store'])
     ->name('admin.news.store');
+//изменение новости
+Route::get('/admin/news/edit/{news}', [AdminNewsController::class, 'edit'])
+    ->name('admin.news.edit');
+Route::put('/admin/news/edit/{news}', [AdminNewsController::class, 'update'])
+    ->name('admin.news.update');
+
 //добавление категории
 Route::get('/admin/categories/create', [AdminCategoryController::class, 'create'])
     ->name('admin.categories.create');
 Route::post('/admin/categories/create', [AdminCategoryController::class, 'store'])
     ->name('admin.categories.store');
+//изменение категории
+Route::get('/admin/categories/edit/{categories}', [AdminCategoryController::class, 'edit'])
+    ->name('admin.categories.edit');
+Route::put('/admin/categories/edit/{categories}', [AdminCategoryController::class, 'update'])
+    ->name('admin.categories.update');
+
+//выгрузка новостей
+Route::get('/admin/orders', [AdminOrderController::class, 'index'])
+    ->name('admin.orders');
+Route::get('/admin/orders/edit/{orders}', [AdminOrderController::class, 'edit'])
+    ->name('admin.orders.edit');
+Route::put('/admin/orders/edit/{orders}', [AdminOrderController::class, 'update'])
+    ->name('admin.orders.update');
+
 
 //главная страница приветствия
 Route::get('/', function () {

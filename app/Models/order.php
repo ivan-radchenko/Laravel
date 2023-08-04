@@ -2,26 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class News extends Model
+class order extends Model
 {
     use HasFactory;
 
-    protected $table = 'news';
+    protected $table = 'orders';
 
-    protected $fillable = ['category_id','title','description','author','source_id','status'];
-
-    public function scopeStatus(Builder $query): Builder
-    {
-        if (request()->has('f')) {
-            return $query->where('status', request()->query('f'));
-        }
-        return $query;
-    }
+    protected $fillable = ['customer','phone','email','category_id','source_id','description'];
 
     //связи
     public function category(): BelongsTo
