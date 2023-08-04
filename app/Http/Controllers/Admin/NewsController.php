@@ -18,7 +18,12 @@ class NewsController extends Controller
      */
     public function index(): View
     {
-        return \view('admin.news.index',['newsList'=>News::All()]);
+        return \view('admin.news.index',[
+            'newsList'=>News::query()
+                ->status()
+                ->with('category','source')
+                ->paginate(20)
+        ]);
     }
 
     /**
