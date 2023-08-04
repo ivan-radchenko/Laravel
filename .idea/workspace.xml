@@ -146,11 +146,12 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;hw__5&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hw__6&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -176,7 +177,9 @@
       <workItem from="1689845826335" duration="29000" />
       <workItem from="1689845861358" duration="10659000" />
       <workItem from="1690368842216" duration="15886000" />
-      <workItem from="1690727566098" duration="882000" />
+      <workItem from="1690727566098" duration="15408000" />
+      <workItem from="1691071311537" duration="8335000" />
+      <workItem from="1691138611221" duration="20759000" />
     </task>
     <servers />
   </component>
