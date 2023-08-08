@@ -40,8 +40,8 @@ class NewsController extends Controller
     {
         $order = new order($request->validated());
         if ($order->save()){
-            return redirect('/')->with('success','заказ на выгрузку новостей создан');
+            return redirect('/')->with('success',__('Was saved successfully'));
         }
-        return back()->with('error','ошибка создания заказа');
+        return back()->with('error',__('We can not save item, pleas try again'));
     }
 }

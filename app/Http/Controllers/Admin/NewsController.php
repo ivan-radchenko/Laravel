@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\News\Edit;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Source;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -88,8 +89,16 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(News $news): JsonResponse
     {
-        //
+        try{
+            $news->delete();
+
+            return response()->json('ok');
+
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage(), $e->getTrace());
+            return response()->json('error', 400);
+        }
     }
 }

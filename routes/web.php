@@ -41,6 +41,9 @@ Route::get('/admin/news/edit/{news}', [AdminNewsController::class, 'edit'])
     ->name('admin.news.edit');
 Route::put('/admin/news/edit/{news}', [AdminNewsController::class, 'update'])
     ->name('admin.news.update');
+//удаление новости
+Route::delete('/admin/news/{news}', [AdminNewsController::class, 'destroy'])
+    ->name('admin.news.delete');
 
 //добавление категории
 Route::get('/admin/categories/create', [AdminCategoryController::class, 'create'])
