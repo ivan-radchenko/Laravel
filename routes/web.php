@@ -55,6 +55,10 @@ Route::get('/admin/categories/edit/{categories}', [AdminCategoryController::clas
     ->name('admin.categories.edit');
 Route::put('/admin/categories/edit/{categories}', [AdminCategoryController::class, 'update'])
     ->name('admin.categories.update');
+//удаление категории
+Route::delete('/admin/categories/{categories}', [AdminCategoryController::class, 'destroy'])
+    ->name('admin.categories.delete');
+
 
 //выгрузка новостей
 Route::get('/admin/orders', [AdminOrderController::class, 'index'])

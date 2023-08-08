@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Categories\Create;
 use App\Http\Requests\Admin\Categories\Edit;
 use App\Models\Category;
 use App\Models\News;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -78,8 +79,16 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $categories): JsonResponse
     {
-        //
+        try{
+            $categories->delete();
+
+            return response()->json('ok');
+
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage(), $e->getTrace());
+            return response()->json('error', 400);
+        }
     }
 }

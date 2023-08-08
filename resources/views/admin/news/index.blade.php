@@ -67,12 +67,12 @@
             elements.forEach(function (element, key) {
                 element.addEventListener('click', function() {
                     const id = this.getAttribute('rel');
-                    if (confirm(`Подтверждаете удаление записи с #ID = ${id}`)) {
+                    if (confirm(`Подтверждаете удаление новости с #ID = ${id}`)) {
                         send(`/admin/news/${id}`).then( () => {
                             location.reload();
                         });
                     } else {
-                        alert("Вы отменили удаление записи");
+                        alert("Вы отменили удаление новости");
                     }
                 });
             });
