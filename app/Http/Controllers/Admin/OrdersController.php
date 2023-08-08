@@ -4,9 +4,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Orders\Edit;
 use App\Models\Category;
 use App\Models\order;
 use App\Models\Source;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -63,10 +65,9 @@ class OrdersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, order $orders)
+    public function update(Edit $request, order $orders)
     {
-        $data = $request->only(['customer','phone','email','category_id','source_id','description']);
-        $orders = $orders->fill($data);
+        $orders = $orders->fill($request->validated());
 
         if ($orders->save())
         {
@@ -78,8 +79,16 @@ class OrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(order $orders): JsonResponse
     {
-        //
+        try{
+            $orders->delete();
+
+            return response()->json('ok');
+
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage(), $e->getTrace());
+            return response()->json('error', 400);
+        }
     }
 }

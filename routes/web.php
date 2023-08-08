@@ -3,6 +3,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\OrdersController as AdminOrderController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,9 @@ Route::get('/admin/news/edit/{news}', [AdminNewsController::class, 'edit'])
     ->name('admin.news.edit');
 Route::put('/admin/news/edit/{news}', [AdminNewsController::class, 'update'])
     ->name('admin.news.update');
+//удаление новости
+Route::delete('/admin/news/{news}', [AdminNewsController::class, 'destroy'])
+    ->name('admin.news.delete');
 
 //добавление категории
 Route::get('/admin/categories/create', [AdminCategoryController::class, 'create'])
@@ -51,6 +55,10 @@ Route::get('/admin/categories/edit/{categories}', [AdminCategoryController::clas
     ->name('admin.categories.edit');
 Route::put('/admin/categories/edit/{categories}', [AdminCategoryController::class, 'update'])
     ->name('admin.categories.update');
+//удаление категории
+Route::delete('/admin/categories/{categories}', [AdminCategoryController::class, 'destroy'])
+    ->name('admin.categories.delete');
+
 
 //выгрузка новостей
 Route::get('/admin/orders', [AdminOrderController::class, 'index'])
@@ -59,6 +67,9 @@ Route::get('/admin/orders/edit/{orders}', [AdminOrderController::class, 'edit'])
     ->name('admin.orders.edit');
 Route::put('/admin/orders/edit/{orders}', [AdminOrderController::class, 'update'])
     ->name('admin.orders.update');
+//удаление заказа
+Route::delete('/admin/orders/{orders}', [AdminOrderController::class, 'destroy'])
+    ->name('admin.orders.delete');
 
 
 //главная страница приветствия
@@ -69,15 +80,13 @@ Route::get('/', function () {
 //новости
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
-Route::get('/news/{id}', [NewsController::class, 'show'])
-    ->where('id', '\d+')
+Route::get('/news/show/{news}', [NewsController::class, 'show'])
     ->name('news.show');
 
 //категории новостей
-Route::get('/news/categories', [NewsController::class, 'categories'])
+Route::get('/news/categories', [CategoryController::class, 'index'])
     ->name('news.categories');
-Route::get('/news/category/{id}', [NewsController::class, 'showCategory'])
-    ->where('id', '\d+')
+Route::get('/news/category/{categories}', [CategoryController::class, 'show'])
     ->name('news.showCategory');
 
 //выгрузка новостей

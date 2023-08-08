@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Main\Orders\Create;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\order;
@@ -18,27 +19,9 @@ class NewsController extends Controller
     }
 
     //метод выводящий конкретную новость по id
-    public function show(int $id): View
+    public function show(News $news)
     {
-        $news = app(News::class);
-
-        return \view('news.show',['news'=>$news ->getItemById($id)]);
-    }
-
-    //метод выводящий все категории
-    public function categories():View
-    {
-        $categories = app(Category::class);
-
-        return \view('news.categories', ['categoriesList'=> $categories->getAll()]);
-    }
-
-    //метод выводящий новости из конкретной категории
-    public function showCategory(int $id): View
-    {
-        $news = app(News::class);
-        $categories = app(Category::class);
-        return \view('news.showCategory', ['categories'=> $categories->getCategoryById($id)],['newsList'=>$news ->getAll()]);
+        return \view('news.show',['news'=>$news]);
     }
 
     //метод выводящий страницу выгрузки
@@ -53,14 +36,12 @@ class NewsController extends Controller
         ]);
     }
 
-    public function uploadingStore(Request $request)
+    public function uploadingStore(Create $request)
     {
-        $data = $request->only(['customer','phone','email','category_id','source_id','description']);
-
-        $order = new order($data);
+        $order = new order($request->validated());
         if ($order->save()){
-            return redirect('/')->with('success','заказ на выгрузку новостей создан');
+            return redirect('/')->with('success',__('Was saved successfully'));
         }
-        return back()->with('error','ошибка создания заказа');
+        return back()->with('error',__('We can not save item, pleas try again'));
     }
 }

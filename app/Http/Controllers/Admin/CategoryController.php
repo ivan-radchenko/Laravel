@@ -4,8 +4,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Categories\Create;
+use App\Http\Requests\Admin\Categories\Edit;
 use App\Models\Category;
 use App\Models\News;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -32,15 +35,13 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Create $request)
     {
-        $data = $request->only(['name','description']);
-
-        $categories = new Category($data);
+        $categories = new Category($request->validated());
         if ($categories->save()){
-            return redirect()->route('admin.categories')->with('success','категория успешно сохранена');
+            return redirect()->route('admin.categories')->with('success',__('Was saved successfully'));
         }
-        return back()->with('error','ошибка сохранения категории');
+        return back()->with('error',__('We can not save item, pleas try again'));
     }
 
     /**
@@ -64,23 +65,30 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $categories)
+    public function update(Edit $request, Category $categories)
     {
-        $data = $request->only(['name','description']);
-        $categories = $categories->fill($data);
+        $categories = $categories->fill($request->validated());
 
         if ($categories->save())
         {
-            return redirect()->route('admin.categories')->with('success','категория успешно изменена');
+            return redirect()->route('admin.categories')->with('success',__('Was saved successfully'));
         }
-        return back()->with('error','ошибка изменения категории');
+        return back()->with('error',__('We can not save item, pleas try again'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $categories): JsonResponse
     {
-        //
+        try{
+            $categories->delete();
+
+            return response()->json('ok');
+
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage(), $e->getTrace());
+            return response()->json('error', 400);
+        }
     }
 }
