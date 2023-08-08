@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\News\Create;
+use App\Http\Requests\Admin\News\Edit;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Source;
@@ -37,17 +39,14 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Create $request)
     {
-        $request->validate(['title' => 'required']);
 
-        $data = $request->only(['category_id','title','description','author','source_id','status']);
-
-        $news = new News($data);
+        $news = new News($request->validated());
         if ($news->save()){
-            return redirect()->route('admin.news')->with('success','новость успешно сохранена');
+            return redirect()->route('admin.news')->with('success', __('Was saved successfully'));
         }
-        return back()->with('error','ошибка сохранения новости');
+        return back()->with('error',__('We can not save item, pleas try again'));
     }
 
     /**
@@ -75,16 +74,15 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, News $news)
+    public function update(Edit $request, News $news)
     {
-        $data = $request->only(['category_id','title','description','author','source_id','status']);
-        $news = $news->fill($data);
+        $news = $news->fill($request->validated());
 
         if ($news->save())
         {
-            return redirect()->route('admin.news')->with('success','новость успешно изменена');
+            return redirect()->route('admin.news')->with('success',__('Was saved successfully'));
         }
-        return back()->with('error','ошибка изменения новости');
+        return back()->with('error',__('We can not save item, pleas try again'));
     }
 
     /**

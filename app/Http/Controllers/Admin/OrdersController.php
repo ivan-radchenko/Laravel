@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Orders\Edit;
 use App\Models\Category;
 use App\Models\order;
 use App\Models\Source;
@@ -63,10 +64,9 @@ class OrdersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, order $orders)
+    public function update(Edit $request, order $orders)
     {
-        $data = $request->only(['customer','phone','email','category_id','source_id','description']);
-        $orders = $orders->fill($data);
+        $orders = $orders->fill($request->validated());
 
         if ($orders->save())
         {

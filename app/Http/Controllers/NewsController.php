@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Main\Orders\Create;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\order;
@@ -35,11 +36,9 @@ class NewsController extends Controller
         ]);
     }
 
-    public function uploadingStore(Request $request)
+    public function uploadingStore(Create $request)
     {
-        $data = $request->only(['customer','phone','email','category_id','source_id','description']);
-
-        $order = new order($data);
+        $order = new order($request->validated());
         if ($order->save()){
             return redirect('/')->with('success','заказ на выгрузку новостей создан');
         }
