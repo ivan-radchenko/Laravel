@@ -36,7 +36,7 @@
                     <td>{{ $orders->description }}</td>
                     <td>{{ $orders->created_at }}</td>
                     <td>{{ $orders->updated_at }}</td>
-                    <td><a href="{{ route('admin.orders.edit', ['orders' => $orders->id]) }}">Edit</a> &nbsp; <a href="">Delete</a></td>
+                    <td><a href="{{ route('admin.orders.edit', ['orders' => $orders->id]) }}">Edit</a> &nbsp;<a href="javascript:;" class="delete" rel="{{ $orders->id }}">Delete</a></td>
                 </tr>
             @empty
                 <tr>
@@ -45,6 +45,34 @@
             @endforelse
             </tbody>
         </table>
-{{--        {{$newsList->links()}}--}}
     </div>
 @endsection
+@push('js')
+    <script>
+        let elements = document.querySelectorAll(".delete");
+        elements.forEach(function (element, key) {
+            element.addEventListener('click', function() {
+                const id = this.getAttribute('rel');
+                if (confirm(`Подтверждаете удаление заказа с #ID = ${id}`)) {
+                    send(`/admin/orders/${id}`).then( () => {
+                        location.reload();
+                    });
+                } else {
+                    alert("Вы отменили удаление заказа");
+                }
+            });
+        });
+
+        async function send(url) {
+            let response = await fetch (url, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            });
+
+            let result = await response.json();
+            return result.ok;
+        }
+    </script>
+@endpush

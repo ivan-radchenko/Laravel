@@ -67,6 +67,9 @@ Route::get('/admin/orders/edit/{orders}', [AdminOrderController::class, 'edit'])
     ->name('admin.orders.edit');
 Route::put('/admin/orders/edit/{orders}', [AdminOrderController::class, 'update'])
     ->name('admin.orders.update');
+//удаление заказа
+Route::delete('/admin/orders/{orders}', [AdminOrderController::class, 'destroy'])
+    ->name('admin.orders.delete');
 
 
 //главная страница приветствия

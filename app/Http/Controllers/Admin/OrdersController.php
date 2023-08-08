@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Orders\Edit;
 use App\Models\Category;
 use App\Models\order;
 use App\Models\Source;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -78,8 +79,16 @@ class OrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(order $orders): JsonResponse
     {
-        //
+        try{
+            $orders->delete();
+
+            return response()->json('ok');
+
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage(), $e->getTrace());
+            return response()->json('error', 400);
+        }
     }
 }
