@@ -3,6 +3,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\OrdersController as AdminOrderController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -69,15 +70,13 @@ Route::get('/', function () {
 //новости
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
-Route::get('/news/{id}', [NewsController::class, 'show'])
-    ->where('id', '\d+')
+Route::get('/news/show/{news}', [NewsController::class, 'show'])
     ->name('news.show');
 
 //категории новостей
-Route::get('/news/categories', [NewsController::class, 'categories'])
+Route::get('/news/categories', [CategoryController::class, 'index'])
     ->name('news.categories');
-Route::get('/news/category/{id}', [NewsController::class, 'showCategory'])
-    ->where('id', '\d+')
+Route::get('/news/category/{categories}', [CategoryController::class, 'show'])
     ->name('news.showCategory');
 
 //выгрузка новостей

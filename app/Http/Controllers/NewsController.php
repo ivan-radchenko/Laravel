@@ -18,27 +18,9 @@ class NewsController extends Controller
     }
 
     //метод выводящий конкретную новость по id
-    public function show(int $id): View
+    public function show(News $news)
     {
-        $news = app(News::class);
-
-        return \view('news.show',['news'=>$news ->getItemById($id)]);
-    }
-
-    //метод выводящий все категории
-    public function categories():View
-    {
-        $categories = app(Category::class);
-
-        return \view('news.categories', ['categoriesList'=> $categories->getAll()]);
-    }
-
-    //метод выводящий новости из конкретной категории
-    public function showCategory(int $id): View
-    {
-        $news = app(News::class);
-        $categories = app(Category::class);
-        return \view('news.showCategory', ['categories'=> $categories->getCategoryById($id)],['newsList'=>$news ->getAll()]);
+        return \view('news.show',['news'=>$news]);
     }
 
     //метод выводящий страницу выгрузки

@@ -7,7 +7,7 @@
     <hr>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        @foreach ($categoriesList as $category)
+        @foreach ($categories as $category)
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">
@@ -15,7 +15,7 @@
                         <p class="card-text">--Описание категории--</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="{{route('news.showCategory', ['id' => $category->id])}}" class="btn btn-primary my-2">Перейти в категорию</a>
+                                <a href="{{route('news.showCategory', ['categories' => $category->id])}}" class="btn btn-primary my-2">Перейти в категорию</a>
                             </div>
                             <small class="text-muted"></small>
                         </div>
