@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\OrdersController as AdminOrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -94,3 +95,8 @@ Route::get('/news/uploading', [NewsController::class, 'uploading'])
     ->name('news.uploading');
 Route::post('/news/uploading', [NewsController::class, 'uploadingStore'])
     ->name('news.uploading.store');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home');
