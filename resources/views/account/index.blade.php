@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Пароль</label>
-                            <input type="password" class="form-control" name="password" id="password" value="{{$user->password}}">
+                            <input type="password" class="form-control" name="password" id="password" value="">
                         </div>
                         <button type="submit" class="btn btn-success" style="margin-top: 10px">Сохранить</button>
                     </form>
