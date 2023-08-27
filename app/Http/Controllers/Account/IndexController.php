@@ -22,11 +22,12 @@ class IndexController extends Controller
         return \view('account.index',['user'=>User::all()->find($userId)]);
     }
 
-    public function update(Edit $request, user $users): RedirectResponse
+    public function update(Edit $request, user $user): RedirectResponse
     {
-        $users = $users->fill($request->validated());
+/*        dd($request->validated());*/
+        $user = $user->fill($request->validated());
 
-        if ($users->save())
+        if ($user->save())
         {
             return redirect()->route('account')->with('success','данные успешно сохранены');
         }

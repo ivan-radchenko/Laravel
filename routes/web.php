@@ -68,8 +68,12 @@ Route::group(['middleware'=>'auth',],function (){
 
         Route::get('/admin/categories', [AdminCategoryController::class, 'index'])
             ->name('admin.categories');
+
         Route::get('/admin/news', [AdminNewsController::class, 'index'])
             ->name('admin.news');
+
+        Route::get('/admin/accounts',[App\Http\Controllers\Admin\AccountsController::class,'index'])
+            ->name('admin.accounts');
 //добавление новости
         Route::get('/admin/news/create', [AdminNewsController::class, 'create'])
             ->name('admin.news.create');
@@ -109,5 +113,12 @@ Route::group(['middleware'=>'auth',],function (){
 //удаление заказа
         Route::delete('/admin/orders/{orders}', [AdminOrderController::class, 'destroy'])
             ->name('admin.orders.delete');
+//пользователи
+        Route::get('/admin/accounts/edit/{user}',[App\Http\Controllers\Admin\AccountsController::class,'edit'])
+            ->name('admin.accounts.edit');
+        Route::put('/admin/accounts/edit/{user}',[App\Http\Controllers\Admin\AccountsController::class,'update'])
+            ->name('admin.accounts.update');
+        Route::delete('/admin/accounts/{user}',[App\Http\Controllers\Admin\AccountsController::class,'destroy'])
+            ->name('admin.accounts.delete');
     });
 });

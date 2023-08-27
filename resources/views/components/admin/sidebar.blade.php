@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if (request()->routeIs('#'))active @endif" href="#">
+                <a class="nav-link @if (request()->routeIs('#'))active @endif" href="{{route('admin.accounts')}}">
                     <span data-feather="users"></span>
                     Пользователи
                 </a>
