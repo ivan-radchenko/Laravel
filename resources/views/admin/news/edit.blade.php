@@ -60,7 +60,6 @@
                         @if($news->status===Status::BLOCKED->value) selected @endif>{{Status::BLOCKED->value}}</option>
                 </select>
             </div>
-{{--            <input type="hidden" class="form-group" id="created_at" name="created_at" value="{{now()}}">--}}
             <hr>
             <button type="submit" class="btn btn-success">Сохранить</button>
         </form>

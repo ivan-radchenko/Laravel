@@ -11,5 +11,6 @@
     "Reset Password": "Сбросить пароль",
     "Send Password Reset Link": "Отправить ссылку для сброса пароля",
     "Register": "Регистрация",
-    "Name": "Имя"
+    "Name": "Имя",
+    "Logout": "Выход"
 }

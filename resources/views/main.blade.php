@@ -7,12 +7,6 @@
             <h1 class="fw-light">Добро пожаловать на ТрэшНовости.РФ</h1>
             <p class="lead text-muted">На нашем сайте вы найдете самые трэшовые новости, бережно собраннные для вас со всех уголков СССР</p>
             @include('inc.message')
-            <p>
-                <a href="{{route('news.index')}}" class="btn btn-primary my-2">Лента новостей</a>
-                <a href="{{route('news.categories')}}" class="btn btn-secondary my-2">Категории</a>
-                <a href="{{route('news.uploading')}}" class="btn btn-secondary my-2">Выгрузка новостей</a>
-                <a href="{{route('home')}}" class="btn btn-secondary my-2">Вход</a>
-            </p>
         </div>
     </div>
 </section>

@@ -54,8 +54,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
     ->name('home');
 
 Route::group(['middleware'=>'auth',],function (){
-    Route::get('/account',AccountController::class)
+    //аккаунт
+    Route::get('/account',[AccountController::class,'index'])
         ->name('account');
+    Route::put('/account/{user}',[AccountController::class,'update'])
+        ->name('account.update');
 
     //Admin
     Route::group(['middleware'=>'is_admin',],function () {
