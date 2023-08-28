@@ -1,3 +1,21 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@section('title')@show|ТрэшНовости.РФ</title>
+
+    <!-- Fonts -->
+    <link href="{{asset('assets/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Scripts -->
+{{--    @vite(['resources/sass/app.scss', 'resources/js/app.js'])--}}
+    <script src="{{asset('assets/bootstrap.bundle.min.js')}}"></script>
+</head>
 <header>
     <div class="collapse bg-dark" id="navbarHeader"></div>
     <div class="navbar navbar-dark bg-dark shadow-sm">
@@ -41,6 +59,7 @@
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
+
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -51,3 +70,12 @@
         </div>
     </div>
 </header>
+<body>
+    <div id="app">
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
+</body>
+<x-footer></x-footer>
+</html>

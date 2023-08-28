@@ -2,8 +2,6 @@
 @section('title')Выгрузка новостей@parent @stop
 @section('content')
     <h1>Выгрузка ТрэшНовостей.РФ</h1>
-    <a href="{{route('news.categories')}}" class="btn btn-primary my-2">Категории</a>
-    <hr>
 
     <div>
         <form method="post" action="{{route('news.uploading.store')}}">

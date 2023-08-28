@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="df4daa5d-e14a-46d2-b8e2-7fab951c7f7d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/orders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Account/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Account/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AccountsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AccountsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Main/Account/Edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Main/Account/Edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2023_08_26_152345_add_is_admin_column_to_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_08_26_152345_add_is_admin_column_to_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/account/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/account/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/accounts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/accounts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/editAccount.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/editAccount.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/admin/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/admin/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,8 +143,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
-      <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
-      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="2Spa9P5YoOUYiWEs30073ulYaRc" />
@@ -149,8 +155,9 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "HW__7",
-    "last_opened_file_path": "C:/Users/SonySakura/Desktop/Laravel/lang/ru",
+    "git-widget-placeholder": "hw__8",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/SonySakura/Desktop/Laravel/app/Http/Requests/Admin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -161,7 +168,13 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\SonySakura\Desktop\Laravel\app\Http\Requests\Admin" />
       <recent name="C:\Users\SonySakura\Desktop\Laravel\lang\ru" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SonySakura\Desktop\Laravel\public\assets" />
+      <recent name="C:\Users\SonySakura\Desktop\Laravel\resources\views\layouts" />
+      <recent name="C:\Users\SonySakura\Desktop\Laravel" />
     </key>
   </component>
   <component name="RunManager">
@@ -190,6 +203,10 @@
       <workItem from="1691071311537" duration="8335000" />
       <workItem from="1691138611221" duration="20759000" />
       <workItem from="1691494975364" duration="16697000" />
+      <workItem from="1692974284344" duration="1505000" />
+      <workItem from="1692976623352" duration="4715000" />
+      <workItem from="1693048081409" duration="31934000" />
+      <workItem from="1693210044449" duration="10625000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,16 @@
 {
     "Was saved successfully": "Запись успешно сохранена",
-    "We can not save item, pleas try again": "Не удалось сохранить запись"
+    "We can not save item, pleas try again": "Не удалось сохранить запись",
+    "Login": "Вход",
+    "Email Address": "Email Адрес",
+    "Password": "Пароль",
+    "Remember Me": "Запомнить меня",
+    "Forgot Your Password?": "Забыли Ваш Пароль?",
+    "Please confirm your password before continuing.": "Пожалуйста, подтвердите Ваш пароль перед тем, как продолжить.",
+    "Confirm Password": "Подтвердите пароль",
+    "Reset Password": "Сбросить пароль",
+    "Send Password Reset Link": "Отправить ссылку для сброса пароля",
+    "Register": "Регистрация",
+    "Name": "Имя",
+    "Logout": "Выход"
 }
