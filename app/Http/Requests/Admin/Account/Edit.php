@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Main\Account;
+namespace App\Http\Requests\Admin\Account;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,6 +24,7 @@ class Edit extends FormRequest
         return [
             'name' => ['required', 'string', 'min:2', 'max:50'],
             'email' => ['email:rfc,dns'],
+            'is_admin' => ['required','integer','min:0', 'max:1']
         ];
     }
 }

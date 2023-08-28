@@ -59,6 +59,8 @@ Route::group(['middleware'=>'auth',],function (){
         ->name('account');
     Route::put('/account/{user}',[AccountController::class,'update'])
         ->name('account.update');
+    Route::put('/account/{user}/password/',[AccountController::class,'updatePassword'])
+        ->name('account.update.password');
 
     //Admin
     Route::group(['middleware'=>'is_admin',],function () {
@@ -118,6 +120,8 @@ Route::group(['middleware'=>'auth',],function (){
             ->name('admin.accounts.edit');
         Route::put('/admin/accounts/edit/{user}',[App\Http\Controllers\Admin\AccountsController::class,'update'])
             ->name('admin.accounts.update');
+        Route::put('/admin/accounts/edit/{user}/password',[App\Http\Controllers\Admin\AccountsController::class,'updatePassword'])
+            ->name('admin.accounts.update.password');
         Route::delete('/admin/accounts/{user}',[App\Http\Controllers\Admin\AccountsController::class,'destroy'])
             ->name('admin.accounts.delete');
     });

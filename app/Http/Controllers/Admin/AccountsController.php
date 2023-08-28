@@ -4,11 +4,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Account\Edit;
+use App\Http\Requests\Admin\Account\EditPassword;
 use App\Http\Requests\Admin\Categories\Create;
-use App\Http\Requests\Admin\Categories\Edit;
+
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -27,9 +30,9 @@ class AccountsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create():View
+    public function create()
     {
-        return view('admin.news.createCategory');
+        //
     }
 
     /**
@@ -37,11 +40,7 @@ class AccountsController extends Controller
      */
     public function store(Create $request)
     {
-        $categories = new Category($request->validated());
-        if ($categories->save()){
-            return redirect()->route('admin.categories')->with('success',__('Was saved successfully'));
-        }
-        return back()->with('error',__('We can not save item, pleas try again'));
+        //
     }
 
     /**
@@ -55,34 +54,46 @@ class AccountsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $categories)
+    public function edit(User $user)
     {
-        return view('admin.news.editCategory', [
-            'categories' => $categories,
+        return view('admin.editAccount', [
+            'user' => $user,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Edit $request, Category $categories)
+    public function update(Edit $request, user $user): RedirectResponse
     {
-        $categories = $categories->fill($request->validated());
+        $user = $user->fill($request->validated());
 
-        if ($categories->save())
+        if ($user->save())
         {
-            return redirect()->route('admin.categories')->with('success',__('Was saved successfully'));
+            return redirect()->route('admin.accounts')->with('success','данные успешно сохранены');
         }
-        return back()->with('error',__('We can not save item, pleas try again'));
+        return back()->with('error','не удалось обновить данные');
+    }
+
+    public function updatePassword(EditPassword $request, user $user): RedirectResponse
+    {
+        /*        dd($request->validated());*/
+        $user = $user->fill($request->validated());
+
+        if ($user->save())
+        {
+            return redirect()->route('admin.accounts')->with('success','данные успешно сохранены');
+        }
+        return back()->with('error','не удалось обновить данные');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $categories): JsonResponse
+    public function destroy(User $user): JsonResponse
     {
         try{
-            $categories->delete();
+            $user->delete();
 
             return response()->json('ok');
 

@@ -56,8 +56,8 @@
         elements.forEach(function (element, key) {
             element.addEventListener('click', function() {
                 const id = this.getAttribute('rel');
-                if (confirm(`Подтверждаете удаление категории с #ID = ${id}`)) {
-                    send(`/admin/categories/${id}`).then( () => {
+                if (confirm(`Подтверждаете удаление пользователя с #ID = ${id}`)) {
+                    send(`/admin/accounts/${id}`).then( () => {
                         location.reload();
                     });
                 } else {

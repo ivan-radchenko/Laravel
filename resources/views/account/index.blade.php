@@ -34,11 +34,21 @@
                             <label for="email">Email</label>
                             <input type="email" class="form-control" name="email" id="email" value="{{$user->email}}">
                         </div>
-                        <div class="form-group">
+{{--                        <div class="form-group">
                             <label for="password">Пароль</label>
                             <input type="password" class="form-control" name="password" id="password" value="">
-                        </div>
-                        <button type="submit" class="btn btn-success" style="margin-top: 10px">Сохранить</button>
+                        </div>--}}
+                        <button type="submit" class="btn btn-success" style="margin-top: 10px">Изменить данные</button>
+                    </form>
+                    <form method="post" action="{{ route('account.update.password', ['user' => $user->id]) }}">
+                            @csrf
+                            @method('PUT')
+
+                            <div class="form-group">
+                                <label for="password">Новый пароль</label>
+                                <input type="password" class="form-control" name="password" id="password" value="">
+                            </div>
+                            <button type="submit" class="btn btn-success" style="margin-top: 10px">Изменить пароль</button>
                     </form>
                 </div>
             </div>

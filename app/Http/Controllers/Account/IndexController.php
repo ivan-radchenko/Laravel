@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Main\Account\Edit;
+use App\Http\Requests\Main\Account\EditPassword;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,6 +26,17 @@ class IndexController extends Controller
     public function update(Edit $request, user $user): RedirectResponse
     {
 /*        dd($request->validated());*/
+        $user = $user->fill($request->validated());
+
+        if ($user->save())
+        {
+            return redirect()->route('account')->with('success','данные успешно сохранены');
+        }
+        return back()->with('error','не удалось обновить данные');
+    }
+    public function updatePassword(EditPassword $request, user $user): RedirectResponse
+    {
+        /*        dd($request->validated());*/
         $user = $user->fill($request->validated());
 
         if ($user->save())
