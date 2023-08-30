@@ -4,10 +4,14 @@
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
+                    @if(Auth::user()->avatar !== null)
+                    <img src="{{ Auth::user()->avatar }}" style="width:250px;" alt="avatar">
+                    @endif
                     <h1 class="fw-light">Добро пожаловать,{{Auth::user()->name}}!</h1>
                     @if(Auth::user()->is_admin === true)
                         <a href="{{route('admin.news')}}" class="btn btn-primary my-2">Перейти в панель управления администратора</a>
                     @endif
+                        
                 @include('inc.message')
             </div>
         </div>
@@ -22,6 +26,7 @@
                             <x-alert :message="$error" type="danger"></x-alert>
                         @endforeach
                     @endif
+
                     <form method="post" action="{{ route('account.update', ['user' => $user->id]) }}">
                         @csrf
                         @method('PUT')

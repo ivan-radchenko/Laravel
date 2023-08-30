@@ -62,7 +62,13 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                                <a class="btn btn-link" href="{{ route('social-providers.redirect', ['driver' => 'github']) }}">
+                                    Вход через GitHub
+                                </a>
                             </div>
+                            <a class="btn btn-link" href="{{ route('social-providers.redirect', ['driver' => 'vkontakte']) }}">
+                                Вход через VK
+                            </a>
                         </div>
                     </form>
                 </div>
