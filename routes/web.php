@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\Account\IndexController as AccountController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
-use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\OrdersController as AdminOrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ParserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,10 @@ Route::get('/news/uploading', [NewsController::class, 'uploading'])
     ->name('news.uploading');
 Route::post('/news/uploading', [NewsController::class, 'uploadingStore'])
     ->name('news.uploading.store');
+
+//parser
+Route::get('/parser',[ParserController::class,'index'])
+    ->name('parser');
 
 //авторизация
 Auth::routes();
@@ -115,6 +120,7 @@ Route::group(['middleware'=>'auth',],function (){
 //удаление заказа
         Route::delete('/admin/orders/{orders}', [AdminOrderController::class, 'destroy'])
             ->name('admin.orders.delete');
+
 //пользователи
         Route::get('/admin/accounts/edit/{user}',[App\Http\Controllers\Admin\AccountsController::class,'edit'])
             ->name('admin.accounts.edit');
