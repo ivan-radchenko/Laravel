@@ -66,6 +66,9 @@
                                     Вход через GitHub
                                 </a>
                             </div>
+                            <a class="btn btn-link" href="{{ route('social-providers.redirect', ['driver' => 'vkontakte']) }}">
+                                Вход через VK
+                            </a>
                         </div>
                     </form>
                 </div>
