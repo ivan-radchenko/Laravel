@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\OrdersController as AdminOrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ParserController;
+use App\Http\Controllers\SocialProvidersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +53,18 @@ Route::post('/news/uploading', [NewsController::class, 'uploadingStore'])
 //parser
 Route::get('/parser',[ParserController::class,'index'])
     ->name('parser');
+
+// Guests routes
+
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/{driver}/redirect', [SocialProvidersController::class, 'redirect'])
+        ->where('driver', '\w+')
+        ->name('social-providers.redirect');
+
+    Route::get('/{driver}/callback', [SocialProvidersController::class, 'callback'])
+        ->where('driver', '\w+')
+        ->name('social-providers.callback');
+});
 
 //авторизация
 Auth::routes();
