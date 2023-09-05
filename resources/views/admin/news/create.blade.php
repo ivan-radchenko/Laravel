@@ -11,7 +11,7 @@
                 <x-alert :message="$error" type="danger"></x-alert>
             @endforeach
         @endif
-        <form method="post" action="{{route('admin.news.store')}}">
+        <form method="post" action="{{route('admin.news.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="category_id">Категория</label>

@@ -11,7 +11,7 @@
                 <x-alert :message="$error" type="danger"></x-alert>
             @endforeach
         @endif
-        <form method="post" action="{{ route('admin.news.update', ['news' => $news->id]) }}">
+        <form method="post" action="{{ route('admin.news.update', ['news' => $news->id]) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -30,6 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="image">Изображение</label>
+                <img src="{{Storage::disk('public')->url($news->image)}}" style="width: 200px" alt="image">
                 <input type="file" class="form-control" name="image" id="image">
             </div>
             <div class="form-group">

@@ -13,7 +13,7 @@ class News extends Model
 
     protected $table = 'news';
 
-    protected $fillable = ['category_id','title','description','author','source_id','status'];
+    protected $fillable = ['category_id','title','description','author','source_id','status','image'];
 
     public function scopeStatus(Builder $query): Builder
     {
