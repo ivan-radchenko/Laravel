@@ -23,7 +23,7 @@ class Create extends FormRequest
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'title' => ['required', 'string', 'min:5', 'max:150'],
             'image' => ['nullable', 'image'],
-            'description' => ['nullable', 'string', 'max:200'],
+            'description' => ['nullable', 'string', 'max:600'],
             'author' => ['required', 'string', 'min:3', 'max:50'],
             'source_id' => ['required', 'integer', 'exists:sources,id'],
             'status' => ['required', new Enum(Status::class)],

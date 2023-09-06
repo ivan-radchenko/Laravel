@@ -38,6 +38,7 @@
 
 <script src="{{asset('assets/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('assets/feather.min.js')}}"></script><script src="{{asset('assets/dashboard.js')}}"></script>
+<script src="{{asset('assets/ckeditor.js')}}"></script>
 
 @stack('js')
 
