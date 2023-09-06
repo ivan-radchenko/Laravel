@@ -11,6 +11,7 @@ use App\Http\Controllers\ParserController;
 use App\Http\Controllers\SocialProvidersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use UniSharp\LaravelFilemanager\Lfm;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 //главная страница приветствия
 Route::get('/', function () {
@@ -143,5 +141,9 @@ Route::group(['middleware'=>'auth',],function (){
             ->name('admin.accounts.update.password');
         Route::delete('/admin/accounts/{user}',[App\Http\Controllers\Admin\AccountsController::class,'destroy'])
             ->name('admin.accounts.delete');
+//файловый менеджер
+        Route::group(['prefix' => 'laravel-filemanager',], function () {
+            Lfm::routes();
+        });
     });
 });
