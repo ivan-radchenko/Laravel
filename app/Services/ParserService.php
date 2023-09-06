@@ -44,6 +44,6 @@ class ParserService implements Parser
         $explode = explode('/',$this->link);
         $fileName = end($explode);
 
-        Storage::append('parse/' . $fileName . "json" , json_encode($data));
+        Storage::append('parser/' . $fileName . "json" , json_encode($data));
     }
 }
