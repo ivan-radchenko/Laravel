@@ -5,9 +5,10 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\OrdersController as AdminOrderController;
+use App\Http\Controllers\Admin\ParserController;
+use App\Http\Controllers\Admin\RssController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\ParserController;
 use App\Http\Controllers\SocialProvidersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,8 @@ Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
 Route::get('/news/show/{news}', [NewsController::class, 'show'])
     ->name('news.show');
+Route::get('/news/rss/', [NewsController::class, 'rss'])
+    ->name('news.rss');
 
 //категории новостей
 Route::get('/news/categories', [CategoryController::class, 'index'])
@@ -48,9 +51,8 @@ Route::get('/news/uploading', [NewsController::class, 'uploading'])
 Route::post('/news/uploading', [NewsController::class, 'uploadingStore'])
     ->name('news.uploading.store');
 
-//parser
-Route::get('/parser',[ParserController::class,'index'])
-    ->name('parser');
+
+
 
 // Guests routes
 
@@ -92,6 +94,9 @@ Route::group(['middleware'=>'auth',],function (){
 
         Route::get('/admin/accounts',[App\Http\Controllers\Admin\AccountsController::class,'index'])
             ->name('admin.accounts');
+
+        Route::get('/admin/rss',[App\Http\Controllers\Admin\RssController::class,'index'])
+            ->name('admin.rss');
 //добавление новости
         Route::get('/admin/news/create', [AdminNewsController::class, 'create'])
             ->name('admin.news.create');
@@ -141,6 +146,23 @@ Route::group(['middleware'=>'auth',],function (){
             ->name('admin.accounts.update.password');
         Route::delete('/admin/accounts/{user}',[App\Http\Controllers\Admin\AccountsController::class,'destroy'])
             ->name('admin.accounts.delete');
+
+//parser
+        Route::get('/admin/parser',[ParserController::class,'index'])
+            ->name('parser');
+
+//RSS
+        Route::get('/admin/rss/edit/{rsses}',[RssController::class,'edit'])
+            ->name('admin.rss.edit');
+        Route::put('/admin/rss/edit/{rsses}',[RssController::class,'update'])
+            ->name('admin.rss.update');
+        Route::get('/admin/rss/create', [RssController::class, 'create'])
+            ->name('admin.rss.create');
+        Route::post('/admin/rss/create', [RssController::class, 'store'])
+            ->name('admin.rss.store');
+        Route::delete('/admin/rss/{rsses}',[RssController::class,'destroy'])
+            ->name('admin.rss.delete');
+
 //файловый менеджер
         Route::group(['prefix' => 'laravel-filemanager',], function () {
             Lfm::routes();

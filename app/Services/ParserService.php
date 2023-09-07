@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\Rss;
+use App\Models\RssNews;
 use App\Services\Contracts\Parser;
 use Illuminate\Support\Facades\Storage;
 use JetBrains\PhpStorm\NoReturn;
@@ -24,26 +26,21 @@ class ParserService implements Parser
         $parser = XmlParserData::load($this->link);
 
         $data = $parser->parse([
-            'title' => [
-                'uses' => 'channel.title',
-            ],
-            'link' => [
-                'uses' => 'channel.link',
-            ],
-            'description' => [
-                'uses' => 'channel.description',
-            ],
-            'image' => [
-                'uses' => 'channel.image.url',
-            ],
-            'news' => [
-                'uses' => 'channel.item[title,link,author,description,pubDate,category]'
-            ],
+            "news" => [
+                "uses" => "channel.item[title,link,description,pubDate,author,category]"
+            ]
         ]);
 
-        $explode = explode('/',$this->link);
+
+        foreach ($data['news'] as $item){
+            $newData = new RssNews($item);
+            $newData->save();
+        };
+
+
+/*        $explode = explode('/',$this->link);
         $fileName = end($explode);
 
-        Storage::append('parser/' . $fileName . "json" , json_encode($data));
+        Storage::append('parser/' . $fileName . "json" , json_encode($data));*/
     }
 }

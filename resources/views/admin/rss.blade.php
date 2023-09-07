@@ -1,0 +1,75 @@
+@extends('layouts.admin')
+@section('content')
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Список Rss</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+                <a href="{{route('admin.rss.create')}}" type="button" class="btn btn-sm btn-outline-secondary">Добавить Rss</a>
+            </div>
+        </div>
+    </div>
+
+    @include('inc.message')
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">url</th>
+                <th scope="col">Дата добавления</th>
+                <th scope="col">Дата изменения</th>
+                <th scope="col">Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            @forelse($rsses as $rss)
+                <tr>
+                    <td>{{ $rss->id}}</td>
+                    <td>{{ $rss->url }}</td>
+                    <td>{{ $rss->created_at }}</td>
+                    <td>{{ $rss->updated_at }}</td>
+                    <td><a href="{{ route('admin.rss.edit', ['rsses' => $rss->id]) }}">Edit</a> &nbsp; <a href="javascript:;" class="delete" rel="{{ $rss->id }}">Delete</a></td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="6">Записей не найдено</td>
+                </tr>
+            @endforelse
+            </tbody>
+        </table>
+        <div class="btn-group me-2">
+            <a href="{{route('parser')}}" type="button" class="btn btn-sm btn-outline-primary">Поставить парсинг Rss в очередь</a>
+        </div>
+    </div>
+@endsection
+@push('js')
+    <script>
+        let elements = document.querySelectorAll(".delete");
+        elements.forEach(function (element, key) {
+            element.addEventListener('click', function() {
+                const id = this.getAttribute('rel');
+                if (confirm(`Подтверждаете удаление категории с #ID = ${id}`)) {
+                    send(`/admin/rss/${id}`).then( () => {
+                        location.reload();
+                    });
+                } else {
+                    alert("Вы отменили удаление категори");
+                }
+            });
+        });
+
+        async function send(url) {
+            let response = await fetch (url, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            });
+
+            let result = await response.json();
+            return result.ok;
+        }
+    </script>
+@endpush
+

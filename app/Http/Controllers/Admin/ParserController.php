@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Jobs\NewsParsing;
 use App\Models\Rss;
-use App\Services\Contracts\Parser;
-use Illuminate\Http\Request;
-use Orchestra\Parser\Xml\Facade as XmlParserData;
 
 class ParserController extends Controller
 {
@@ -21,6 +19,6 @@ class ParserController extends Controller
             dispatch(new NewsParsing($url->url));
         }
 
-        return "Data saved";
+        return redirect()->route('admin.rss')->with('success',('Задача парсинга добавлена вочередь'));
     }
 }
