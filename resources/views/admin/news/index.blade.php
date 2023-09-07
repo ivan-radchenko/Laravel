@@ -24,6 +24,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Категория</th>
                 <th scope="col">Заголовок</th>
+                <th scope="col">Фото</th>
                 <th scope="col">Автор</th>
                 <th scope="col">Источник</th>
                 <th scope="col">Статус</th>
@@ -38,6 +39,7 @@
                     <td>{{ $news->id}}</td>
                     <td>{{ $news->category->name }}</td>
                     <td>{{ $news->title }}</td>
+                    <td><img src="{{Storage::disk('public')->url($news->image)}}" alt="image" style="width: 100px"></td>
                     <td>{{ $news->author}}</td>
                     <td>{{ $news->source->source }}</td>
                     <td>{{ $news->status }}</td>

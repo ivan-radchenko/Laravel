@@ -18,7 +18,7 @@
                     <a class="nav-link" href="{{route('news.uploading')}}">Выгрузка новостей</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('parser')}}">Парсер</a>
+                    <a class="nav-link" href="{{route('news.rss')}}">Rss</a>
                 </li>
                 @guest
                     @if (Route::has('login'))

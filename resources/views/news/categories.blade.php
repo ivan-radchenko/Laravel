@@ -7,7 +7,7 @@
         @foreach ($categories as $category)
             <div class="col">
                 <div class="card shadow-sm">
-                    <div class="card-body">
+                    <div class="card-body"     style="min-height: 250px" >
                         <h1>{{$category->name}}</h1>
                         <p class="card-text">--Описание категории--</p>
                         <div class="d-flex justify-content-between align-items-center">

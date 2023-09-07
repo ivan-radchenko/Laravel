@@ -6,6 +6,8 @@ use App\Http\Requests\Main\Orders\Create;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\order;
+use App\Models\Rss;
+use App\Models\RssNews;
 use App\Models\Source;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -43,5 +45,10 @@ class NewsController extends Controller
             return redirect('/')->with('success',__('Was saved successfully'));
         }
         return back()->with('error',__('We can not save item, pleas try again'));
+    }
+
+    public function rss(): View
+    {
+        return \view('news.rss',['newsList'=>RssNews::all()]);
     }
 }

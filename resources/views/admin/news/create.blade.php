@@ -11,7 +11,7 @@
                 <x-alert :message="$error" type="danger"></x-alert>
             @endforeach
         @endif
-        <form method="post" action="{{route('admin.news.store')}}">
+        <form method="post" action="{{route('admin.news.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="category_id">Категория</label>
@@ -64,3 +64,17 @@
         </form>
     </div>
 @endsection
+@push('js')
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <script>
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+        };
+    </script>
+    <script>
+        CKEDITOR.replace('description', options);
+    </script>
+@endpush

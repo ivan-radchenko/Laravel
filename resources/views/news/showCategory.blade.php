@@ -8,7 +8,7 @@
             @if($news->category_id == $categories->id)
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="{{$news->image}}" alt="image"/>
+                    <img src="{{Storage::disk('public')->url($news->image)}}" alt="image"/>
 
                     <div class="card-body">
                         <h4>{{$news->title}}</h4>

@@ -26,12 +26,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if (request()->routeIs('#'))active @endif" href="{{route('admin.accounts')}}">
+                <a class="nav-link @if (request()->routeIs('admin.accounts'))active @endif" href="{{route('admin.accounts')}}">
                     <span data-feather="users"></span>
                     Пользователи
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link @if (request()->routeIs('admin.rss'))active @endif" href="{{route('admin.rss')}}">
+                    <span data-feather="rss"></span>
+                    Rss
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
